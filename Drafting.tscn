@@ -1,0 +1,103 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Contestant.tscn" type="PackedScene" id=1]
+[ext_resource path="res://PlayerTemplate.tscn" type="PackedScene" id=2]
+[ext_resource path="res://DraftOrder.gd" type="Script" id=3]
+[ext_resource path="res://Drafting.gd" type="Script" id=4]
+[ext_resource path="res://PlayersGrid.gd" type="Script" id=5]
+
+[node name="Drafting" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+player_template_scene = ExtResource( 2 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="DraftOrder" type="Control" parent="VBoxContainer"]
+margin_right = 1024.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 0, 50 )
+script = ExtResource( 3 )
+
+[node name="Timer" type="Timer" parent="VBoxContainer/DraftOrder"]
+wait_time = 2.0
+autostart = true
+
+[node name="Tween" type="Tween" parent="VBoxContainer/DraftOrder"]
+
+[node name="Drafting" type="HBoxContainer" parent="VBoxContainer"]
+margin_top = 54.0
+margin_right = 1024.0
+margin_bottom = 600.0
+size_flags_vertical = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ContestantsLeft" type="VBoxContainer" parent="VBoxContainer/Drafting"]
+margin_right = 342.0
+margin_bottom = 546.0
+size_flags_horizontal = 2
+
+[node name="Contestant" parent="VBoxContainer/Drafting/ContestantsLeft" instance=ExtResource( 1 )]
+margin_right = 342.0
+margin_bottom = 64.0
+
+[node name="Contestant2" parent="VBoxContainer/Drafting/ContestantsLeft" instance=ExtResource( 1 )]
+margin_top = 68.0
+margin_right = 342.0
+margin_bottom = 132.0
+contestant_name = "Marthos"
+
+[node name="Contestant3" parent="VBoxContainer/Drafting/ContestantsLeft" instance=ExtResource( 1 )]
+margin_top = 136.0
+margin_right = 342.0
+margin_bottom = 200.0
+
+[node name="Contestant4" parent="VBoxContainer/Drafting/ContestantsLeft" instance=ExtResource( 1 )]
+margin_top = 204.0
+margin_right = 342.0
+margin_bottom = 268.0
+
+[node name="Contestant5" parent="VBoxContainer/Drafting/ContestantsLeft" instance=ExtResource( 1 )]
+margin_top = 272.0
+margin_right = 342.0
+margin_bottom = 336.0
+
+[node name="Contestant6" parent="VBoxContainer/Drafting/ContestantsLeft" instance=ExtResource( 1 )]
+margin_top = 340.0
+margin_right = 342.0
+margin_bottom = 404.0
+
+[node name="Contestant7" parent="VBoxContainer/Drafting/ContestantsLeft" instance=ExtResource( 1 )]
+margin_top = 408.0
+margin_right = 342.0
+margin_bottom = 472.0
+
+[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer/Drafting"]
+margin_left = 514.0
+margin_right = 1024.0
+margin_bottom = 546.0
+size_flags_horizontal = 3
+scroll_horizontal_enabled = false
+
+[node name="PlayersGrid" type="GridContainer" parent="VBoxContainer/Drafting/ScrollContainer"]
+margin_right = 510.0
+size_flags_horizontal = 3
+columns = 4
+script = ExtResource( 5 )
+players_folder = "res://players"
+player_template_scene = ExtResource( 2 )
+
+[node name="HTTPRequest" type="HTTPRequest" parent="."]
+
+[connection signal="timeout" from="VBoxContainer/DraftOrder/Timer" to="VBoxContainer/DraftOrder" method="_on_Timer_timeout"]

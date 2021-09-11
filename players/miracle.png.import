@@ -1,0 +1,13 @@
+[remap]
+
+importer="image"
+type="Image"
+path="res://.import/miracle.png-6d7e0e5aab88751d1c9e9c7ae3ca4e0c.image"
+
+[deps]
+
+source_file="res://players/miracle.png"
+dest_files=[ "res://.import/miracle.png-6d7e0e5aab88751d1c9e9c7ae3ca4e0c.image" ]
+
+[params]
+

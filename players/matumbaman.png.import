@@ -1,0 +1,13 @@
+[remap]
+
+importer="image"
+type="Image"
+path="res://.import/matumbaman.png-daa1725c1f09c68bd14e8be049a2e2db.image"
+
+[deps]
+
+source_file="res://players/matumbaman.png"
+dest_files=[ "res://.import/matumbaman.png-daa1725c1f09c68bd14e8be049a2e2db.image" ]
+
+[params]
+
