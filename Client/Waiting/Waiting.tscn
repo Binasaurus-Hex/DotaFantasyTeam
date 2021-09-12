@@ -1,0 +1,41 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Client/Waiting/Waiting.gd" type="Script" id=1]
+[ext_resource path="res://Client/Drafting/Drafting.tscn" type="PackedScene" id=2]
+
+[node name="Waiting" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+drafting_scene = ExtResource( 2 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -92.5
+margin_top = -20.0
+margin_right = 92.5
+margin_bottom = 20.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+margin_right = 185.0
+margin_bottom = 14.0
+text = "Wait for everyone to connect"
+
+[node name="ProgressBar" type="ProgressBar" parent="VBoxContainer"]
+margin_top = 18.0
+margin_right = 185.0
+margin_bottom = 20.0
+value = 55.02
+percent_visible = false
+__meta__ = {
+"_edit_use_anchors_": false
+}

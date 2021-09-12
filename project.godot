@@ -9,20 +9,34 @@
 config_version=4
 
 _global_script_classes=[ {
-"base": "PanelContainer",
+"base": "Object",
+"class": "Participant",
+"language": "GDScript",
+"path": "res://Server/Participant.gd"
+}, {
+"base": "Control",
 "class": "PlayerTemplate",
 "language": "GDScript",
-"path": "res://PlayerTemplate.gd"
+"path": "res://Client/Drafting/PlayerTemplate.gd"
 } ]
 _global_script_class_icons={
+"Participant": "",
 "PlayerTemplate": ""
 }
 
 [application]
 
 config/name="DotaFantasyTeam"
-run/main_scene="res://Drafting.tscn"
+run/main_scene="res://Client/Connection/Connection.tscn"
 config/icon="res://icon.png"
+
+[autoload]
+
+InternetBridge="*res://InternetBridge.gd"
+
+[global]
+
+import=false
 
 [physics]
 

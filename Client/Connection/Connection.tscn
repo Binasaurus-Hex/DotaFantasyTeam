@@ -1,0 +1,57 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Client/Connection/Connection.gd" type="Script" id=1]
+[ext_resource path="res://Client/Waiting/Waiting.tscn" type="PackedScene" id=2]
+
+[node name="Control" type="Control"]
+anchor_left = -0.000325918
+anchor_right = 0.999674
+anchor_bottom = 1.0
+margin_left = 2.8316
+margin_top = -0.33371
+margin_right = 2.83154
+margin_bottom = -0.33374
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+waiting_scene = ExtResource( 2 )
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -512.0
+margin_right = 512.0
+margin_bottom = 24.0
+grow_vertical = 2
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="HBoxContainer"]
+margin_left = 352.0
+margin_top = 5.0
+margin_right = 430.0
+margin_bottom = 19.0
+text = "Your Name :"
+
+[node name="TextEdit" type="TextEdit" parent="HBoxContainer"]
+margin_left = 434.0
+margin_right = 634.0
+margin_bottom = 24.0
+rect_min_size = Vector2( 200, 0 )
+text = "dfgdfgdfgdfg"
+fold_gutter = true
+caret_block_mode = true
+caret_blink = true
+
+[node name="Button" type="Button" parent="HBoxContainer"]
+margin_left = 638.0
+margin_right = 671.0
+margin_bottom = 24.0
+text = "GO"
+
+[connection signal="pressed" from="HBoxContainer/Button" to="." method="_on_Button_pressed"]
