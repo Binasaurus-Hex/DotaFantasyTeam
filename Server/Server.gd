@@ -15,7 +15,7 @@ func start():
 	get_tree().network_peer = network
 	print("server started")
 	
-	InternetBridge.connect("participant_joined", self, "_participant_connected")
+	ConnectionBridge.connect("participant_joined", self, "_participant_connected")
 	
 func _participant_connected(participant_name):
 	participants.append({
@@ -27,8 +27,8 @@ func _participant_connected(participant_name):
 		participants_connected()
 		
 func participants_connected():
-	InternetBridge.send_all_participants(participants)
-	$StartTimer.start()
+	ConnectionBridge.send("all_participants", participants)
+	$WaitTimer.start()
 	print("all participants connected")
 	
 func generate_draft_order() -> Array:
@@ -45,16 +45,26 @@ func generate_draft_order() -> Array:
 func is_even(x):
 	return x % 2 == 0
 
-func _on_DraftingTimer_timeout():
-	iterate_draft()
-
 func iterate_draft():
 	var current_index = draft_order.pop_back()
 	if current_index == null:
-		$DraftingTimer.stop()
+		on_draft_finished()
+		return
 	var participant = participants[current_index]
-	InternetBridge.send_drafting_participant(participant.name)
+	ConnectionBridge.send("drafting_participant",participant.name)
+	
+func on_draft_finished():
+	$DraftingTimer.stop()
+	
+func on_drafting_seconds(seconds):
+	ConnectionBridge.send("draft_time", seconds)
 
-func _on_StartTimer_timeout():
+func on_wait_seconds(seconds):
+	ConnectionBridge.send("wait_time", seconds)
+	
+func on_drafting_timeout():
+	iterate_draft()
+
+func on_wait_timeout():
 	iterate_draft()
 	$DraftingTimer.start()

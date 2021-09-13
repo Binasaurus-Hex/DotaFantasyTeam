@@ -4,7 +4,7 @@ export var drafting_scene: PackedScene
 var my_participant
 
 func _ready():
-	InternetBridge.connect("all_participants",self,"_on_all_participants")
+	ConnectionBridge.connect("all_participants",self,"_on_all_participants")
 
 func _process(delta):
 	$VBoxContainer/ProgressBar.value += 100 * delta

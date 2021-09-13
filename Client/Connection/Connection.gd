@@ -9,7 +9,7 @@ func _ready():
 
 func _on_Button_pressed():
 	var text = $HBoxContainer/TextEdit.text
-	InternetBridge.send_participant_joined(text)
+	ConnectionBridge.send("participant_joined",text)
 	var waiting = waiting_scene.instance()
 	waiting.my_participant = text
 	var root = get_tree().root

@@ -18,10 +18,16 @@ _global_script_classes=[ {
 "class": "PlayerTemplate",
 "language": "GDScript",
 "path": "res://Client/Drafting/PlayerTemplate.gd"
+}, {
+"base": "Timer",
+"class": "PollTimer",
+"language": "GDScript",
+"path": "res://Server/PollTimer.gd"
 } ]
 _global_script_class_icons={
 "Participant": "",
-"PlayerTemplate": ""
+"PlayerTemplate": "",
+"PollTimer": ""
 }
 
 [application]
@@ -32,7 +38,8 @@ config/icon="res://icon.png"
 
 [autoload]
 
-InternetBridge="*res://InternetBridge.gd"
+ConnectionBridge="*res://Bridges/ConnectionBridge.gd"
+Players="*res://Players.tscn"
 
 [global]
 
