@@ -11,7 +11,7 @@ func _on_Button_pressed():
 	var text = $HBoxContainer/TextEdit.text
 	ConnectionBridge.send("participant_joined",text)
 	var waiting = waiting_scene.instance()
-	waiting.my_participant = text
+	waiting.my_participant_name = text
 	var root = get_tree().root
 	root.remove_child(self)
 	root.add_child(waiting)

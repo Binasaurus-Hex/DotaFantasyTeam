@@ -1,28 +1,34 @@
 extends Node
 
 export var player_template_scene: PackedScene
-var player_names: Array
-var player_images: Array
+var player_names = ['23savage', '4dr', 'abed', 'ame', 'arteezy', 'borax',
+					'bryle', 'ceb', 'chris', 'chyuan', 'collapse', 'costabile',
+					'cr1t-', 'deth', 'dj', 'dm', 'dubu', 'dy', 'eleven', 'emo',
+					'eurus', 'faith_bian', 'fly', 'flyfly', 'fng', 'frank', 'fy',
+					'gpk', 'handsken', 'iceiceice', 'jabz', 'jt-', 'k1', 'kaka', 'karl',
+					'kingslayer', 'kj', 'kuku', 'lanm', 'leostyle-', 'limmp',
+					'matumbaman', 'miposhka', 'miroslaw', 'mjz', 'mnz', 'monet',
+					'moonmeander', 'mooz', 'mss', 'n0tail', 'nightfall', 'nikobaby',
+					'nisha', 'nothingtosay', 'oli', 'ori', 'poyoyo', 'puppey', 'pyw',
+					'quinn', 'raven', 's4', 'saberlight-', 'saksa', 'save-', 'scofield',
+					'somnusm', 'stinger', 'sumail', 'super', 'svg', 'tavo', 'thiolicor',
+					'timado', 'topson', 'torontotokyo', 'whitealbum', 'whitemon', 'wisper',
+					'xepher', 'xinq', 'xxs', "y'", 'yang', 'yapzor', 'yatoro', 'yawar', 'zai']
 
+export(String, DIR) var image_folder
+var player_images: Array
 var _image_type = ".jpg"
 
 func _ready():
-	var filenames: Array = _get_filenames("players")
-	print("got filenames")
-	var filtered: Array = _filter_extension(filenames, _image_type)
-	print("filtered ", filtered)
-	
-	for file_name in filtered:
-		var player_name: String = _trim_extension(file_name, _image_type)
-		player_names.append(player_name)
-		
-		var player_image: Image = _create_image(file_name)
-		player_images.append(player_image)
-	
+	load_images()
+
+func load_images():
+	for player_name in player_names:
+		var image: Image = _create_image(image_folder + "/" + player_name + ".jpg")
+		player_images.append(image)
 		
 func _create_image(file_name: String) -> Image:
-	var image: Image = Image.new()
-	image.load("players/"+file_name)
+	var image: Image = load(file_name)
 	return image
 
 func _filter_extension(filenames: Array, extension: String) -> Array:

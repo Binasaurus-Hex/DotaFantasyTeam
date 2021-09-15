@@ -3,10 +3,14 @@ extends Control
 
 class_name PlayerTemplate
 
-signal selected(player_name)
+signal pressed(player_name)
 
 var player_name: String setget _set_player_name
 var player_image: Image setget _set_player_image
+
+func disable():
+	$Button.disabled = true
+	modulate.darkened(0.5)
 
 func _set_player_name(value: String):
 	$VBoxContainer/Name.text = value
@@ -30,4 +34,4 @@ func _set_player_image(image: Image):
 
 
 func _on_pressed():
-	emit_signal("selected",player_name)
+	emit_signal("pressed",player_name)

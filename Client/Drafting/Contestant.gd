@@ -18,7 +18,6 @@ func set_participant_name(value: String):
 	participant_name = value
 	
 func add_player(player_name):
-	print("player added", player_name)
 	players.append(player_name)
 	var player_template: PlayerTemplate = players_container.get_child(current_index)
 	player_template.player_name = player_name
