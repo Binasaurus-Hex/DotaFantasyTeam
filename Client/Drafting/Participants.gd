@@ -4,7 +4,7 @@ var currently_drafting
 
 func _ready():
 	ConnectionBridge.connect("drafting_participant", self, "_highlight_participant")
-	ConnectionBridge.connect("player_selected", self, "_on_player_selected")
+	ConnectionBridge.connect("player_chosen", self, "_on_player_chosen")
 
 func _highlight_participant(participant_name):
 	currently_drafting = participant_name
@@ -15,9 +15,10 @@ func _highlight_participant(participant_name):
 		else:
 			selection_indicator.deselect()
 			
-func _on_player_selected(args: Array):
+func _on_player_chosen(args: Array):
 	var participant_name = args[0]
 	var player_name = args[1]
+	print(player_name," selected")
 	var ui = get_participant_ui(participant_name)
 	ui.add_player(player_name)
 			

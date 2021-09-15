@@ -34,9 +34,14 @@ func draft():
 			choose_player(random_player())
 			
 	$DraftingTimer.stop()
+	$EndTimer.start()
+	yield($EndTimer,"timeout")
 	emit_signal("completed")
 
-func _on_player_selected(player):
+func _on_player_selected(args: Array):
+	var participant = args[0]
+	var player = args[1]
+	print(participant, " selected ", player)
 	choose_player(player)
 	player_selected = true
 
@@ -54,7 +59,7 @@ func generate_draft_order(number_of_participants) -> Array:
 func choose_player(player):
 	current_drafter.players.append(player)
 	available_players.erase(player)
-	ConnectionBridge.send("player_selected", [current_drafter.name, player])
+	ConnectionBridge.send("player_chosen", [current_drafter.name, player])
 	
 func random_player():
 	var length = available_players.size()

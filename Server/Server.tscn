@@ -12,16 +12,20 @@ script = ExtResource( 1 )
 script = ExtResource( 3 )
 
 [node name="WaitTimer" type="Timer" parent="Drafting"]
-wait_time = 10.0
+wait_time = 2.0
 one_shot = true
 script = ExtResource( 2 )
 
 [node name="DraftingTimer" type="Timer" parent="Drafting"]
-wait_time = 5.0
+wait_time = 3.0
 script = ExtResource( 2 )
 
 [node name="TimerSignals" type="Node" parent="Drafting"]
 script = ExtResource( 4 )
+
+[node name="EndTimer" type="Timer" parent="Drafting"]
+wait_time = 2.0
+one_shot = true
 
 [connection signal="seconds_changed" from="Drafting/WaitTimer" to="Drafting/TimerSignals" method="_on_WaitTimer_seconds_changed"]
 [connection signal="seconds_changed" from="Drafting/DraftingTimer" to="Drafting/TimerSignals" method="_on_DraftingTimer_seconds_changed"]

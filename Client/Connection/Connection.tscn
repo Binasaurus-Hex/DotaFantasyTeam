@@ -54,4 +54,9 @@ margin_right = 671.0
 margin_bottom = 24.0
 text = "GO"
 
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.5
+autostart = true
+
 [connection signal="pressed" from="HBoxContainer/Button" to="." method="_on_Button_pressed"]
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

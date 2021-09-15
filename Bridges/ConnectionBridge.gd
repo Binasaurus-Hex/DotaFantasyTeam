@@ -3,9 +3,16 @@ extends Node
 signal drafting_participant(participant)
 signal participant_joined(participant)
 signal all_participants(participants)
-signal player_selected(player_name, participant)
+
+signal player_chosen()
+signal player_selected()
+
 signal draft_time(time)
 signal wait_time(time)
+
+signal drafting_complete()
+
+signal gamestate()
 
 func send(signal_name, value):
 	rpc("recieve", signal_name, value)
