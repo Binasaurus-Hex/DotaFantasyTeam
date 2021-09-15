@@ -33,7 +33,7 @@ _global_script_class_icons={
 [application]
 
 config/name="DotaFantasyTeam"
-run/main_scene="res://Client/Connection/Connection.tscn"
+run/main_scene="res://Server/Server.tscn"
 config/icon="res://icon.png"
 
 [autoload]

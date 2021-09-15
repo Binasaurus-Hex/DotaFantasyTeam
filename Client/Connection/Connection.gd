@@ -5,7 +5,7 @@ var participant_arg
 
 func _ready():
 	var peer := NetworkedMultiplayerENet.new()
-	peer.create_client("localhost", 8080)
+	peer.create_client("www.sanderbot.uk", 8080)
 	get_tree().network_peer = peer
 	
 	var arguments = {}

@@ -18,7 +18,6 @@ func start():
 func _participant_connected(participant_name):
 	if find_participant(participant_name): # someone is reconnecting
 		ConnectionBridge.send("all_participants", participants)
-		#ConnectionBridge.send("gamestate", [participant_name, get_gamestate()]) # send them the gamestate
 	else:
 		participants.append({
 			"name":participant_name,
@@ -35,12 +34,6 @@ func find_participant(participant_name):
 			return participant
 	return null
 	
-func get_gamestate():
-	var gamestate = {
-		"participants": participants,
-		"available_players": $Drafting.available_players
-	}
-	
 func participants_connected():
 	ConnectionBridge.send("all_participants", participants)
 	$Drafting.participants = participants
@@ -48,5 +41,11 @@ func participants_connected():
 	
 	yield($Drafting,"completed")
 	ConnectionBridge.send("drafting_complete",[])
+	
+	var draft_file = File.new()
+	draft_file.open("draft_file.txt", File.WRITE)
+	draft_file.store_string(participants as String)
+	draft_file.close()
+
 
 
