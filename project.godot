@@ -40,6 +40,14 @@ config/icon="res://icon.png"
 
 ConnectionBridge="*res://Bridges/ConnectionBridge.gd"
 Players="*res://Players.tscn"
+SessionData="*res://Client/SessionData.gd"
+Commandline="*res://Commandline.gd"
+
+[display]
+
+window/size/width=1920
+window/size/height=1080
+window/size/fullscreen=true
 
 [global]
 

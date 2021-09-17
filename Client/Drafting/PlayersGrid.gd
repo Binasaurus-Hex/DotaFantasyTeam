@@ -5,8 +5,6 @@ export var player_template_scene: PackedScene
 export var participants_path: NodePath
 onready var participants = get_node(participants_path)
 
-var my_participant_name
-
 var enabled: bool = false
 
 var available_players: Array = (Players.player_names).duplicate()
@@ -25,7 +23,7 @@ func _ready():
 func _on_player_pressed(player_name: String):
 	if not enabled:
 		return
-	ConnectionBridge.send("player_selected", [my_participant_name, player_name])
+	ConnectionBridge.send("player_selected", [SessionData.participant_name, player_name])
 	enabled = false
 	
 func _on_player_chosen(args: Array):

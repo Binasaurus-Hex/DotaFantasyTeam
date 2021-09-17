@@ -1,7 +1,12 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Client/Waiting/Waiting.gd" type="Script" id=1]
 [ext_resource path="res://Client/Drafting/Drafting.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Client/Waiting/ProgressBar.gd" type="Script" id=3]
+[ext_resource path="res://Client/LukesThing/Intro.tscn" type="PackedScene" id=4]
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 1, 1, 1, 1 )
 
 [node name="Waiting" type="Control"]
 anchor_right = 1.0
@@ -10,7 +15,15 @@ script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
-drafting_scene = ExtResource( 2 )
+game = ExtResource( 4 )
+drafting = ExtResource( 2 )
+
+[node name="Panel" type="Panel" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 anchor_left = 0.5
@@ -33,9 +46,11 @@ text = "Wait for everyone to connect"
 [node name="ProgressBar" type="ProgressBar" parent="VBoxContainer"]
 margin_top = 18.0
 margin_right = 185.0
-margin_bottom = 20.0
+margin_bottom = 19.0
+custom_styles/fg = SubResource( 1 )
 value = 55.02
 percent_visible = false
+script = ExtResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
 }

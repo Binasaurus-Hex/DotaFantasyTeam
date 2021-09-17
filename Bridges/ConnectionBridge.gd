@@ -12,7 +12,8 @@ signal wait_time(time)
 
 signal drafting_complete()
 
-signal gamestate()
+signal start_game()
+signal completed_game(participant)
 
 func send(signal_name, value):
 	rpc("recieve", signal_name, value)

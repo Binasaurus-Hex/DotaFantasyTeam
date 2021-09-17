@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Server/Server.gd" type="Script" id=1]
 [ext_resource path="res://Server/PollTimer.gd" type="Script" id=2]
 [ext_resource path="res://Server/Drafting.gd" type="Script" id=3]
 [ext_resource path="res://Server/TimerSignals.gd" type="Script" id=4]
+[ext_resource path="res://Server/DraftOrder.gd" type="Script" id=5]
 
 [node name="Server" type="Node2D"]
 script = ExtResource( 1 )
@@ -12,12 +13,12 @@ script = ExtResource( 1 )
 script = ExtResource( 3 )
 
 [node name="WaitTimer" type="Timer" parent="Drafting"]
-wait_time = 2.0
+wait_time = 30.0
 one_shot = true
 script = ExtResource( 2 )
 
 [node name="DraftingTimer" type="Timer" parent="Drafting"]
-wait_time = 3.0
+wait_time = 10.0
 script = ExtResource( 2 )
 
 [node name="TimerSignals" type="Node" parent="Drafting"]
@@ -26,6 +27,9 @@ script = ExtResource( 4 )
 [node name="EndTimer" type="Timer" parent="Drafting"]
 wait_time = 2.0
 one_shot = true
+
+[node name="DraftOrder" type="Node" parent="."]
+script = ExtResource( 5 )
 
 [connection signal="seconds_changed" from="Drafting/WaitTimer" to="Drafting/TimerSignals" method="_on_WaitTimer_seconds_changed"]
 [connection signal="seconds_changed" from="Drafting/DraftingTimer" to="Drafting/TimerSignals" method="_on_DraftingTimer_seconds_changed"]
